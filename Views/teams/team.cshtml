@@ -1,0 +1,49 @@
+﻿@model Cricket.Models.CricketModel
+@{
+    ViewBag.Title = "team";
+    Layout = "~/Views/shared/_Layout.cshtml";
+}
+<div class ="row">
+    <div class="col-lg-1">
+
+    </div>
+    <div class ="col-lg-10">
+    <h2>TEAMS</h2>
+
+    <table class="table table-striped">   
+        <tr style="font-weight:bold">
+            <td>Sr#</td>
+            <td>Team Name</td>
+            <td>Captain Name</td>
+            <td>Area/Club</td>
+            <td>City</td>
+            <td>Do Challange</td>
+        </tr>
+        @foreach(var z in Model.t)
+        {
+            
+            <tr>
+            <td > @z.Id </td>
+            <td>@z.name</td>
+                @{Session[""+@z.Id] = z.name; }
+            <td>@z.captainName</td>
+            <td>@z.area</td>
+            <td>@z.city</td>
+               
+                
+            <td><div id="browse_app">
+                <form method="post" action="../challengeTeam/challenge">
+                    <input type="hidden" name="z.name" value="@z.name" />
+                    <input type="submit" class="btn btn-large btn-info" value="Challenges" />
+                </form>
+                </div></td>
+            </tr>
+        }
+
+    </table>
+        </div>
+    <div class="col-lg-1">
+
+    </div>
+</div>
+

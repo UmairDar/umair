@@ -1,0 +1,58 @@
+﻿
+@{
+    ViewBag.Title = "edit";
+    Layout = "~/Views/shared/_Layout.cshtml";
+}
+
+
+
+<h2 style ="margin-left:1.3vw ; font-size:2vw">Edit Team Details</h2>
+<div class ="row" style ="margin-top:2vw ; margin-bottom:10vw ; margin-left:1vw">
+    <div class ="col-lg-4">
+        <table>   
+        <tr>
+            <td style="font-weight:bold ; font-size:1.7vw">Team Id: </td>
+            <td><input type ="text" id ="teamId"  name="t.Id" required="required"/></td>
+        </tr>
+            <tr>
+             <td style="color:white">.</td>
+         </tr>
+            <tr>
+                <td><input type ="button" id="my_btn" name="btn_show" value="show details"/></td>
+            </tr>
+            </table>
+        </div>
+    <div class="col-lg-8" id = "myDiv">
+        <table id ="myTable" style="font-size:1.5vw">
+            </table>
+    </div>
+        @Scripts.Render("~/bundles/jquery")
+
+        <script>
+            $(document).ready(function () {
+                $('#my_btn').click(function () {
+                    $('#myTable').empty();
+                    var teamId = $('#teamId').val();
+                    $.getJSON("/editTeam/searchDetails?teamId=" + teamId, function (x) {
+                        if (x.length != 0) {
+                            for (var i = 0; i < x.length; i++) {
+                                $('#myTable').append('<tr> <td style = "font-weight: bold">' + "Name: " + '</td><td>' + x[i].name +
+                                    '</td>  </tr> <tr><td>' + "" + '</td></tr> <tr>   <td style = "font-weight: bold">' + "Captain Name: " + '</td>   <td>' + x[i].captainName +
+                                    '</td>  </tr>  <tr>  <td style = "font-weight: bold">' + "Kit Color: " + '</td> <td>' + x[i].kitColor + '</td> </tr>  <tr>  <td style = "font-weight: bold">' + "Club: " + '</td> <td style = "margin-bottom: 2.5vw">' +
+                                    x[i].area + '</td>  </tr>  <tr>  <td style = "font-weight: bold">' + "Contact No: " + '</td> <td>' +
+                                    x[i].contactNo + '</td>  </tr>  <tr>  <td style = "font-weight: bold">' + "City: " + '</td> <td>' +
+
+                                    x[i].city + '</td> </tr> <tr><td style = "color: white">' + "." + '</td></tr> <tr><td style = "color: white">' + "." + '</td><<td> <a href="../editDetails/changeDetails/' +teamId+ ' " class="btn btn-default">Edit</a></td></tr>');
+                            }
+                        }
+                        else {
+                            $('#myTable').append('<tr> <td>' + "No Data found against this Id" + '</td> </tr>');
+                        }
+
+                    });
+                });
+            });
+</script>
+
+        
+    </div>

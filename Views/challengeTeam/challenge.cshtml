@@ -1,0 +1,78 @@
+﻿@model Cricket.Models.Team
+@{
+    ViewBag.Title = "challenge";
+    Layout = "~/Views/shared/_Layout.cshtml";
+}
+<div class ="row" style ="margin-top:10vw ; margin-bottom:10vw">
+    <div class="col-lg-4">
+
+    </div>
+    <form method ="post" action ="/challengeTeam/saveSchedule">
+    <div class ="col-lg-6">
+        <table>   
+        <tr>
+            <td style="font-weight:bold ; font-size:1.7vw">Your Team Name: </td>
+            <td><input type ="text" id="myTeam" name="s.team1" required="required"  /></td>
+            <td><a href="../registerTeam/register" class="btn btn-default">Register</a></td>
+
+        </tr>
+
+            @Scripts.Render("~/bundles/jquery")
+            <script>
+                $(document).ready(function () {
+                    $('#myTeam').focusout(function () {
+                        var tName = $('#myTeam').val();
+                        $.getJSON("/challengeTeam/validateTeam?teamName=" + tName, function (x) {
+                            if (x) {
+                                
+                                $('#team').text("Available");
+                            }
+                            else {
+                                $('#team').text("**No such team in DB");
+                                $('#myTeam').val('');
+                            }
+                        });
+                    });
+                });
+            </script>
+            <tr><td style="color:white">.</td><td id ="team" style="color:red"></td></tr>
+            <tr>
+            <td style="font-weight:bold ; font-size:1.7vw">(If Registered) </td>
+            
+        </tr>
+         <tr>
+             <td style="color:white">.</td>
+         </tr>
+        <tr>
+            <td style="font-weight:bold ; font-size:1.7vw">Opponent Name: </td>
+            <td><input type ="text"  name="s.team2" value="@Model.name" required="required"/></td>
+        </tr>
+        <tr>
+            <td style="color:white">.</td>
+        </tr>
+        <tr>
+            <td style="font-weight:bold ; font-size:1.7vw">Date: </td>
+            <td><input type="date" name='s.date' class="form-control" id="entry_date" value="2012-12-12" required="required"></td>
+        </tr>
+        <tr>
+            <td style="color:white">.</td>
+        </tr>
+        <tr>
+            <td style="font-weight:bold ; font-size:1.7vw">Time: </td>
+            <td><input type ="text"  name="s.time" required="required"/></td>
+        </tr>
+        <tr>
+            <td style="color:white">.</td>
+        </tr>
+        <tr>
+            <td style="font-weight:bold ; font-size:1.7vw">Area: </td>
+            <td><input type ="text"  name="s.venue" required="required"/></td>
+        </tr>
+    </table>
+            <input type ="submit" name ="btn1" value="save" style="margin-left:17vw; margin-top:2vw ; font-size:1.5vw ; font-weight:bold ; width:6vw ; height:3vw"/>
+        </div>
+    </form>
+    <div class="col-lg-2">
+
+    </div>
+</div>

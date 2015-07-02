@@ -1,0 +1,40 @@
+﻿@model Cricket.Models.CricketModel
+@{
+    ViewBag.Title = "sched";
+    Layout = "~/Views/shared/_Layout.cshtml";
+    
+}
+<div class ="row">
+    <div class="col-lg-1">
+
+    </div>
+    <div class ="col-lg-10">
+    <h2>SCHEDULES</h2>
+
+    <table class="table table-striped">   
+        <tr style="font-weight:bold">
+            <td>Sr#</td>
+            <td>Team1</td>
+            <td>Team2</td>
+            <td>Vanue</td>
+            <td>Date</td>
+            <td>Time</td>
+        </tr>
+        @foreach(var z in Model.s)
+        {
+            
+            <tr>
+            <td > @z.Id </td>
+            <td>@z.team1</td>
+            <td>@z.team2</td>
+            <td>@z.venue</td>
+            <td>@z.date</td>
+            <td>@z.time</td>
+                </tr>
+         }    
+    </table>
+        </div>
+    <div class="col-lg-1">
+
+    </div>
+            </div>

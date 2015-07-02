@@ -1,0 +1,65 @@
+﻿@{
+    ViewBag.Title = "register";
+    Layout = "~/Views/shared/_Layout.cshtml";
+}
+<div class ="row" style ="margin-top:10vw ; margin-bottom:10vw">
+    <div class="col-lg-2">
+
+    </div>
+    <form method ="post" action ="/registerTeam/regTeam">
+    <div class ="col-lg-4">
+        <table>   
+        <tr>
+            <td style="font-weight:bold ; font-size:1.7vw">Team Name: </td>
+            <td><input type ="text"  name="t.name" required="required"/></td>
+        </tr>
+        <tr>
+            <td style="color:white">.</td>
+        </tr>
+        <tr>
+            <td style="font-weight:bold ; font-size:1.7vw">Kit Color: </td>
+            <td><input type ="color"  name="t.kitColor"  style="width:12.6vw" /></td>
+        </tr>
+        <tr>
+            <td style="color:white">.</td>
+        </tr>
+        <tr>
+            <td style="font-weight:bold ; font-size:1.7vw">Contact No: </td>
+            <td><input type ="tel"  name="t.contactNo" required="required"/></td>
+        </tr>
+        <tr>
+            <td style="color:white">.</td>
+        </tr>
+    </table>
+    </div>
+        <div class="col-lg-4">
+            <table>   
+        <tr style="margin-bottom:5vw">
+            <td style="font-weight:bold ; font-size:1.7vw">Captain Name: </td>
+            <td><input type ="text"  name="t.captainName" required="required"/></td>
+        </tr>
+        <tr>
+            <td style="color:white">.</td>
+        </tr>
+        <tr>
+            <td style="font-weight:bold ; font-size:1.7vw">Area/club: </td>
+            <td><input type ="text"  name="t.area" required="required"/></td>
+        </tr>
+        <tr>
+            <td style="color:white">.</td>
+        </tr>
+        <tr>
+            <td style="font-weight:bold ; font-size:1.7vw">City</td>
+            <td><input type ="text"  name="t.city" required="required"/></td>
+        </tr>
+                <tr>
+            <td style="color:white">.</td>
+        </tr>
+    </table>
+            <input type ="submit" name ="btn1" value="save" style="margin-left:17vw ; font-size:1.5vw ; font-weight:bold ; width:6vw ; height:3vw"/>
+        </div>
+    </form>
+    <div class="col-lg-2">
+
+    </div>
+</div>
